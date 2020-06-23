@@ -1,38 +1,56 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { handleLogout } from '../actions/currentUser'
 
-export default function NavigationMenu() {
+class NavigationMenu extends Component {
 
-    return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <p className='gameTitle'>Would You Rather</p>
-            <Nav className="mr-auto">
-                <nav className='nav'>
-                    <ul>
-                        <li>
-                            <NavLink to='/' exact activeClassName='active'>Questions</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='/leaderboard' activeClassName='active'>Leaderboard</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='/new' activeClassName='active'>New Question</NavLink>
-                        </li>
-                    </ul>
-                </nav>
+    logout = (e) => {
+        e.preventDefault()
+        this.props.dispatch(handleLogout())
+    }
+    render() {
+        const { currentUser } = this.props
+        return (
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <p className='gameTitle'>Would You Rather</p>
+                <Nav className="mr-auto">
+                    <nav className='nav'>
+                        <ul>
+                            <li>
+                                <NavLink to='/' exact activeClassName='active'>Questions</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/leaderboard' activeClassName='active'>Leaderboard</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/new' activeClassName='active'>New Question</NavLink>
+                            </li>
+                        </ul>
+                    </nav>
 
-            </Nav>
+                </Nav>
 
-            <Nav>
-                <nav className='nav'>
+                <Nav>
+                    <nav className='nav'>
+                        {this.props.currentUser ?
+                           <p className='userInfo'onClick={this.logout}onClick={this.logout}>Hello, User <NavLink to='/'>(Logout)</NavLink></p> :
+                            <NavLink to='/login'><p className='userInfo'>Login</p></NavLink>
+                        }
+                    </nav>
+                </Nav>
 
-                    <p className='userInfo'>Hello, User <NavLink to='/logout'>(Logout)</NavLink></p>
-
-                </nav>
-            </Nav>
-
-        </Navbar>
-    )
+            </Navbar>
+        )
+    }
 
 }
+
+function mapStateToProps(state) {
+    const { currentUser } = state
+    return {
+        currentUser
+    }
+}
+export default connect(mapStateToProps)(NavigationMenu)

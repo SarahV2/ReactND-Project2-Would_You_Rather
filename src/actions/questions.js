@@ -3,7 +3,7 @@ export const RECIEVE_QUESTIONS = 'RECIEVE_QUESTIONS'
 
 
 
-export function recievequestions(questions) {
+export function recieveUsers(questions) {
     return {
         type: RECIEVE_QUESTIONS,
         questions

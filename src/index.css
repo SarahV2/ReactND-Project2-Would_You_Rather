@@ -93,3 +93,16 @@ li {
 .nav .userInfo a:hover {
   color: red;
 }
+
+.card-img-top {
+  max-height: 10%;
+  min-height: 5%;
+}
+
+#loginImage {
+  height: 50%;
+  width: 50%;
+  object-fit: cover;
+
+
+}

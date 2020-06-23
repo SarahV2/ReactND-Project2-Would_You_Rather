@@ -31,7 +31,8 @@ class LoginPage extends Component {
         this.setState({
             chosenUser: usersList[e.target.value]
         })
-
+        let img = document.getElementById('loginImage')
+        img.setAttribute('src', usersList[e.target.value].avatarURL)
     }
     handleSubmit = (e) => {
         e.preventDefault()
@@ -62,9 +63,12 @@ class LoginPage extends Component {
 
         return (
             <div className='center'>
-                <Card style={{ width: '20rem', padding: '10px', border: '3px solid #00ced1' }}>
+                <Card style={{ width: '30rem', padding: '10px', border: '3px solid #00ced1' }}>
                     <h2>Log In</h2>
-                    <Card.Img variant="top" src={image} />
+                    {/* <Card.Img variant="top" src={image} /> */}
+                    <div className='center'>
+                        <img id='loginImage' src={image} />
+                    </div>
                     <Card.Body>
 
                         <Card.Text>

@@ -35,7 +35,7 @@ class NavigationMenu extends Component {
                 <Nav>
                     <nav className='nav'>
                         {this.props.currentUser ?
-                           <p className='userInfo'onClick={this.logout}onClick={this.logout}>Hello, User <NavLink to='/'>(Logout)</NavLink></p> :
+                           <p className='userInfo'onClick={this.logout}onClick={this.logout}>Hello, {currentUser.name} <NavLink to='/'>(Logout)</NavLink></p> :
                             <NavLink to='/login'><p className='userInfo'>Login</p></NavLink>
                         }
                     </nav>

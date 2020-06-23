@@ -1,44 +1,64 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Card, CardGroup, Button, DropdownButton, Dropdown, Form } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import image from '../utils/avatars/00.png'
 import { handleLogin } from '../actions/currentUser';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-
 class LoginPage extends Component {
 
     state = {
         loggedIn: '',
-        chosenUserID: ''
+        chosenUser: '',
     }
+
+    setUsersList = (users) => {
+        let usersList = []
+        for (user in users) {
+            var user = users[user]
+            usersList.push(user)
+            console.log(user)
+        }
+
+        return usersList
+    }
+
 
     handleChange = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
-
+        const { users } = this.props
+        const usersList = this.setUsersList(users)
         this.setState({
-            chosenUserID: e.target.value
+            chosenUser: usersList[e.target.value]
         })
 
     }
-    handleButtonClick = (e) => {
-        const { chosenUserID } = this.state
-        if (chosenUserID) {
-            this.props.dispatch(handleLogin(chosenUserID))
-            console.log(chosenUserID)
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const { chosenUser } = this.state
+        if (chosenUser) {
+            this.props.dispatch(handleLogin(chosenUser))
+            console.log(chosenUser)
             this.setState({
                 loggedIn: true
             })
         }
 
     }
+
     render() {
         const { loggedIn } = this.state
+        const { users } = this.props
+        let list = []
 
         if (loggedIn === true) {
             return <Redirect to='/' />
         }
+
+        if (users) {
+            list = this.setUsersList(users)
+        }
+
 
         return (
             <div className='center'>
@@ -50,17 +70,22 @@ class LoginPage extends Component {
                         <Card.Text>
                             <select onChange={this.handleChange} className='select' defaultValue='choose'>
                                 <option value='choose' disabled>Log in as ..</option>
-                                <option value="sarahedo">Sarah Edo</option>
-                                <option value="tylermcginnis">Tyler McGinnis</option>
-                                <option value="johndoe">John Doe</option>
+                                {list.map((user, index) => (
+                                    <option key={user.id} value={index}>{user.name}</option>
+                                ))}
                             </select>
                         </Card.Text>
-                        <Button onClick={this.handleButtonClick} variant="outline-info">Log in</Button>
+                        <Button onClick={this.handleSubmit} variant="outline-info">Log in</Button>
                     </Card.Body>
                 </Card>
             </div>
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        users: state.users
+    };
+};
 
-export default connect()(LoginPage)
+export default connect(mapStateToProps)(LoginPage)

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { getInitialData } from '../actions/questions';
-import {getUsers} from '../actions/users'
+import { getUsers } from '../actions/users'
 import { connect } from 'react-redux'
 import LoginPage from './LoginPage';
 import NavigationMenu from './NavigationMenu'
 import Test from './Test';
 import { Redirect, Link, Route } from 'react-router-dom'
 import Questions from './Questions'
+import Leaderboard  from './Leaderboard';
 
 class App extends Component {
 
@@ -17,19 +18,20 @@ class App extends Component {
     console.log(this.props)
   }
   render() {
-    const { currentUser,users,questions } = this.props
+    const { currentUser, users, questions } = this.props
     console.log(users)
     // if (currentUser===undefined) {
     //   return <Redirect to='/login' />
 
     // }
-    console.log(this.state)
+    console.log(this.props)
     return (
       <div className="App" >
         <NavigationMenu />
         {/* <LoginPage /> */}
         <Route path='/' exact component={Questions} />
         <Route path='/login' component={LoginPage} />
+        <Route path='/leaderboard' component={Leaderboard} />
         {/* <LoginPage /> */}
       </div>
     )
@@ -37,7 +39,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  const {currentUser,questions,users}=state
+  const { currentUser, questions, users } = state
   return {
     //loading: authedUser === null
     currentUser,

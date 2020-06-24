@@ -1,4 +1,4 @@
-import { RECIEVE_USERS } from '../actions/users'
+import { RECIEVE_USERS, UPDATE_USER } from '../actions/users'
 
 
 
@@ -9,6 +9,18 @@ export default function users(state = {}, action) {
                 ...state,
                 ...action.users
             }
+        case UPDATE_USER:
+            if (action.targetType === 'questions') {
+                return {
+                    ...state,
+                    [action.userID]: {
+                        ...state[action.userID],
+                        questions: state[action.userID].questions.concat([action.targetID])
+                        }
+                    }
+                }
+            
+
         default:
             return state
     }

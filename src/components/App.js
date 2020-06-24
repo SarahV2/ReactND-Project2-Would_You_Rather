@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getInitialData } from '../actions/questions';
+import { getInitialQuestions } from '../actions/questions';
 import { getUsers } from '../actions/users'
 import { connect } from 'react-redux'
 import LoginPage from './LoginPage';
@@ -13,7 +13,7 @@ import NewQuestion from './NewQuestion';
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(getInitialData())
+    this.props.dispatch(getInitialQuestions())
     this.props.dispatch(getUsers())
     console.log("Welcome")
     console.log(this.props)
@@ -25,7 +25,7 @@ class App extends Component {
     //   return <Redirect to='/login' />
 
     // }
-    console.log(this.props)
+    //console.log(this.props)
     return (
       <div className="App" >
         <NavigationMenu />

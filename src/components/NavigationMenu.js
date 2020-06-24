@@ -27,19 +27,29 @@ class NavigationMenu extends Component {
                             <li>
                                 <NavLink to='/new' activeClassName='active'>New Question</NavLink>
                             </li>
+                            <ul>
+                                {this.props.currentUser ? <div>
+                                    <img src={currentUser.avatarURL} className='miniImage' />
+                                    <p className='userInfo' onClick={this.logout} onClick={this.logout}>Hello, {currentUser.name} <NavLink to='/'>(Logout)</NavLink></p></div> :
+                                    <NavLink to='/login'><p className='userInfo'>Login</p></NavLink>}
+                            </ul>
+
                         </ul>
+
                     </nav>
 
-                </Nav>
 
-                <Nav>
+                </Nav>
+                {/* 
+                <Nav >
                     <nav className='nav'>
-                        {this.props.currentUser ?
-                           <p className='userInfo'onClick={this.logout}onClick={this.logout}>Hello, {currentUser.name} <NavLink to='/'>(Logout)</NavLink></p> :
+                        {this.props.currentUser ? <div>
+                            <div><img src={currentUser.avatarURL} className='miniImage' /></div>
+                            <p className='userInfo' onClick={this.logout} onClick={this.logout}>Hello, {currentUser.name} <NavLink to='/'>(Logout)</NavLink></p></div> :
                             <NavLink to='/login'><p className='userInfo'>Login</p></NavLink>
                         }
                     </nav>
-                </Nav>
+                </Nav> */}
 
             </Navbar>
         )

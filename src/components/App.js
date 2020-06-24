@@ -7,7 +7,8 @@ import NavigationMenu from './NavigationMenu'
 import Test from './Test';
 import { Redirect, Link, Route } from 'react-router-dom'
 import Questions from './Questions'
-import Leaderboard  from './Leaderboard';
+import Leaderboard from './Leaderboard';
+import NewQuestion from './NewQuestion';
 
 class App extends Component {
 
@@ -32,6 +33,7 @@ class App extends Component {
         <Route path='/' exact component={Questions} />
         <Route path='/login' component={LoginPage} />
         <Route path='/leaderboard' component={Leaderboard} />
+        <Route path='/new' component={NewQuestion} />
         {/* <LoginPage /> */}
       </div>
     )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Card } from 'react-bootstrap'
+import Question from './Question'
 
 export class Questions extends Component {
     state = {
@@ -50,7 +51,7 @@ export class Questions extends Component {
             }
 
 
-            const answeredQuestionsList = allQuestions.filter((question) =>
+            const answeredQuestionsList = allQuestions.filter((question, index) =>
                 question.optionOne.votes.includes(currentUser.id) || question.optionTwo.votes.includes(currentUser.id)
             )
             //    console.log(answeredQuestionsList)
@@ -64,7 +65,7 @@ export class Questions extends Component {
                 allQuestions,
                 answeredQList: answeredQuestionsList,
                 unansweredQList: unansweredQuestionsList,
-                displayList:unansweredQuestionsList
+                displayList: unansweredQuestionsList
             })
 
         }
@@ -90,6 +91,9 @@ export class Questions extends Component {
                         <div id='unanswered' className='questionTab activeTab' onClick={(e) => this.handleTabChange(e, 'unanswered')}>Unanswered</div>
                         <div id='answered' className='questionTab' onClick={(e) => this.handleTabChange(e, 'answered')}>Answered</div>
                     </div>
+                    {displayList.map(question => (
+                        <Question key={question.id} question={question} />
+                    ))}
                 </Card>
             </div >
         )

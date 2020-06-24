@@ -203,3 +203,46 @@ input[type='text'] {
   color: white;
   font-weight: bold;
 }
+
+.questionInfo {
+  /* text-align: left; */
+  border: 3px solid black;
+  /* display: block; */
+  /* position: relative; */
+  margin-bottom: 2%;
+  display: inline-block;
+
+  width: 100%;
+}
+
+.questionInfo h5{
+  float: left;
+  /* margin-left: 0;*/
+  padding-left: auto; 
+  padding-top:2%;
+}
+
+.questionInfo .question{
+  /* float: left; */
+  /* margin-left: 0;*/
+  padding-left: auto; 
+  padding-top:5%;
+  font-weight: 900;
+  color: #00ced1;
+  margin: auto;
+}
+.questionInfo p{
+  /* float: left; */
+  /* margin-left: 0;*/
+  padding-left: 10%;
+  padding-top: 2%; 
+  padding-bottom: 1%;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16px;
+  /* padding-top:2%; */
+}
+
+.viewQuestion{
+  margin-bottom: 2%;
+}

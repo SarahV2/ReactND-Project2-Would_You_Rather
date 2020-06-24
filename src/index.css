@@ -175,3 +175,31 @@ input[type='text'] {
   display: flex;
   flex-direction: column;
 }
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+
+.questionTab {
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 20px;
+  width: 100%;
+
+}
+
+.clear:after {
+  clear: both;
+  display: table;
+  content: '';
+}
+
+.activeTab{
+  background-color:#00ced1 ;
+  color: white;
+  font-weight: bold;
+}

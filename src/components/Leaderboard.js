@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Card } from 'react-bootstrap'
+
 export class Leaderboard extends Component {
+    state = {
+        leaderboard: []
+    }
     componentDidMount() {
         const { users } = this.props
 
@@ -15,6 +20,7 @@ export class Leaderboard extends Component {
                     name: user.name,
                     answersCount,
                     questionsCount,
+                    avatarURL: user.avatarURL,
                     score: (questionsCount + answersCount)
                 }
                 leaderboard.push(currentUser)
@@ -22,15 +28,36 @@ export class Leaderboard extends Component {
             }
             leaderboard = leaderboard.sort((a, b) => (a.score > b.score) ? -1 : 1)
             console.log(leaderboard)
+            this.setState({
+                leaderboard
+            })
 
         }
     }
     render() {
-        
-        return (
-            <div>
-                Leaderboard
+        const { leaderboard } = this.state
 
+        return (
+            <div className='center'>
+                <Card style={{ width: '50rem', padding: '10px', border: '3px solid #00ced1' }}>
+                    <h2 style={{ margin: '20px' }}>Leaderboard </h2>
+                    <div className='leaderboardContainer' >
+                        {leaderboard.map((player) => (
+                            // <li key={player.id}>{player.name}</li>
+
+                            <div className='playerInfo'>
+                                <img className='leaderboardDisplay' src={player.avatarURL} />
+                                <h3>{player.name}</h3>  <div>
+                                    <i className="fas fa-star star" />Score:{player.score}
+                                </div>
+                                <span><p>Answered Questions: {player.answersCount}<br />
+                                    Created Questions: {player.questionsCount}</p></span>
+
+                            </div>
+
+                        ))}
+                    </div>
+                </Card>
             </div>
         )
     }

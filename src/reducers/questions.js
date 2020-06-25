@@ -1,4 +1,4 @@
-import { RECIEVE_QUESTIONS, ADD_QUESTION } from '../actions/questions'
+import { RECIEVE_QUESTIONS, ADD_QUESTION, SAVE_ANSWER } from '../actions/questions'
 
 
 export default function questions(state = {}, action) {
@@ -12,6 +12,19 @@ export default function questions(state = {}, action) {
             return {
                 ...state,
                 [action.question.id]: action.question
+            }
+        case SAVE_ANSWER:
+            return {
+                ...state,
+                [action.questionID]: {
+                    ...state[action.questionID],
+                    [action.answer]: {
+                        ...state[action.questionID][action.answer],
+                        votes: [
+                            ...state[action.questionID][action.answer].votes.concat([action.userID])
+                        ]
+                    }
+                }
             }
         default:
             return state

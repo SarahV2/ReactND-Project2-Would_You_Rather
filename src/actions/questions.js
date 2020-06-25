@@ -19,10 +19,13 @@ export function addQuestion(question) {
     }
 }
 
-export function saveAnswer(answer) {
+export function saveAnswer(questionID, userID, answer) {
+    console.log(userID)
     return {
         type: SAVE_ANSWER,
-        answer
+        questionID,
+        answer,
+        userID
     }
 }
 
@@ -51,11 +54,17 @@ export function handleSaveAnswer(questionID, answer) {
         const { currentUser } = getState()
         try {
             const newAnswer = await _saveQuestionAnswer({
-                author: currentUser.id,
-                questionID,
+                authedUser: currentUser.id,
+                qid: questionID,
                 answer
             })
-            console.log(newAnswer)
+            console.log(getState())
+            dispatch(saveAnswer(questionID, currentUser.id, answer))
+            console.log(getState())
+            dispatch(updateUser('answers', currentUser.id, questionID,answer))
+            console.log(getState())
+
+
 
         }
         catch (e) {

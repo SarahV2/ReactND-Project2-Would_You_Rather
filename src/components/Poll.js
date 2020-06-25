@@ -27,7 +27,6 @@ class Poll extends Component {
 
     handleSubmitAnswer = (e, questionID) => {
         e.preventDefault()
-        const qID = ''
         const { userAnswer } = this.state
         if (userAnswer === '') {
             this.setState({
@@ -39,14 +38,13 @@ class Poll extends Component {
                 error: false
             })
             console.log(userAnswer)
+            console.log(questionID)
+            this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
         }
 
 
-        console.log(questionID)
-        // this.props.dispatch(handleSaveAnswer(qID, answer))
-        // this.setState({
-        //     questionStatus: 'answered'
-        // })
+      
+
 
     }
     render() {

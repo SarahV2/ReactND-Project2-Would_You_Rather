@@ -13,12 +13,13 @@ export function recieveUsers(users) {
     }
 }
 
-export function updateUser(targetType, userID, targetID) {
+export function updateUser(targetType, userID, targetID,answer) {
     return {
         type: UPDATE_USER,
         targetType,
         userID,
-        targetID
+        targetID,
+        answer
     }
 }
 

@@ -16,10 +16,23 @@ export default function users(state = {}, action) {
                     [action.userID]: {
                         ...state[action.userID],
                         questions: state[action.userID].questions.concat([action.targetID])
-                        }
                     }
                 }
-            
+            }
+            else if (action.targetType === 'answers') {
+                return {
+                    ...state,
+                    [action.userID]: {
+                        ...state[action.userID],
+                        answers: {
+                            
+                            
+                            ...state[action.userID].answers,
+                            [action.targetID]:action.answer}
+                    }
+                }
+            }
+        
 
         default:
             return state

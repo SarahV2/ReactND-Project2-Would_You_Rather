@@ -189,7 +189,7 @@ input[type='text'] {
   padding: 10px;
   font-size: 20px;
   width: 100%;
-
+  cursor: pointer;
 }
 
 .clear:after {
@@ -198,8 +198,8 @@ input[type='text'] {
   content: '';
 }
 
-.activeTab{
-  background-color:#00ced1 ;
+.activeTab {
+  background-color: #00ced1;
   color: white;
   font-weight: bold;
 }
@@ -215,27 +215,27 @@ input[type='text'] {
   width: 100%;
 }
 
-.questionInfo h5{
+.questionInfo h5 {
   float: left;
   /* margin-left: 0;*/
-  padding-left: auto; 
-  padding-top:2%;
+  padding-left: auto;
+  padding-top: 2%;
 }
 
-.questionInfo .question{
+.questionInfo .question {
   /* float: left; */
   /* margin-left: 0;*/
-  padding-left: auto; 
-  padding-top:5%;
+  padding-left: auto;
+  padding-top: 5%;
   font-weight: 900;
   color: #00ced1;
   margin: auto;
 }
-.questionInfo p{
+.questionInfo p {
   /* float: left; */
   /* margin-left: 0;*/
   padding-left: 10%;
-  padding-top: 2%; 
+  padding-top: 2%;
   padding-bottom: 1%;
   font-style: italic;
   font-weight: 600;
@@ -243,6 +243,68 @@ input[type='text'] {
   /* padding-top:2%; */
 }
 
-.viewQuestion{
+.viewQuestion {
   margin-bottom: 2%;
+}
+
+.progress {
+  width: 70%;
+  display: inline-block;
+  margin: 5px;
+  /* display: block; */
+}
+
+.optionResult {
+  width: 70%;
+  text-align: center;
+
+  margin: auto;
+  margin-bottom: 2%;
+  border: 2px solid royalblue;
+}
+
+.answered {
+  background-color: rgba(0, 0, 150, 0.2);
+}
+
+.resultsTag {
+  float: left;
+  text-decoration: underline;
+}
+
+.answeredQuestion {
+  /* float: left; */
+  /* padding-left: auto;  */
+  padding-top: 5%;
+  margin-left: 5%;
+  padding-left: 2%;
+  font-weight: 900;
+  color: #00ced1;
+  /* margin: auto; */
+}
+
+.parentQ {
+  text-align: left;
+  margin-left: 35%;
+  margin-bottom: 2%;
+}
+
+.options {
+  margin-left: 10%;
+}
+
+/* .questionInfo .optionResult{
+  border:none;
+} */
+.answerButton {
+  margin-top: 2%;
+}
+
+.answeredIcon {
+  font-size: 50px;
+  color: royalblue;
+  /* padding-left: 2px; */
+  float: left;
+  padding-top: 0%;
+  text-shadow: 2px 2px 2px  black;
 }

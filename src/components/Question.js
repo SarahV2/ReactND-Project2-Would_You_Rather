@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
 class Question extends Component {
 
     state = {
@@ -26,7 +27,7 @@ class Question extends Component {
         }
     }
     render() {
-        const { question, users } = this.props
+        const { question, users,questionStatus } = this.props
         const { author } = this.state
         return (
             <div className='center'>
@@ -43,7 +44,9 @@ class Question extends Component {
                        {question.optionOne.text}
                         <br />
                     {question.optionTwo.text}</p> */}
-                    <button className='btn btn-outline-info viewQuestion'>View Poll</button>
+                   <Link to={{pathname: '/view', question, author, questionStatus}}>
+                       
+                       <button className='btn btn-outline-info viewQuestion'>View Poll</button></Link> 
 
                 </div>
             </div>

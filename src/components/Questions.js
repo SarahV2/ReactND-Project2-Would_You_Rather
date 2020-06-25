@@ -80,7 +80,7 @@ export class Questions extends Component {
         //   console.log(questions)
         const { allQuestions } = this.state
         //    console.log(allQuestions)
-        const { displayList } = this.state
+        const { displayList, activeTab } = this.state
         console.log(displayList)
         //console.log(this.props.currentUser)
         return (
@@ -92,7 +92,7 @@ export class Questions extends Component {
                         <div id='answered' className='questionTab' onClick={(e) => this.handleTabChange(e, 'answered')}>Answered</div>
                     </div>
                     {displayList.map(question => (
-                        <Question key={question.id} question={question} />
+                        <Question key={question.id} question={question} questionStatus={activeTab} />
                     ))}
                 </Card>
             </div >

@@ -1,7 +1,9 @@
-import { _getQuestions, _saveQuestion } from '../utils/_DATA'
+import { _getQuestions, _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA'
 import { updateUser } from './users'
 export const RECIEVE_QUESTIONS = 'RECIEVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
+export const SAVE_ANSWER = 'SAVE_ANSWER'
+
 
 
 export function recieveQuestions(questions) {
@@ -14,6 +16,13 @@ export function addQuestion(question) {
     return {
         type: ADD_QUESTION,
         question
+    }
+}
+
+export function saveAnswer(answer) {
+    return {
+        type: SAVE_ANSWER,
+        answer
     }
 }
 
@@ -33,6 +42,24 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
         }
         catch (e) {
             alert(e)
+        }
+    }
+}
+
+export function handleSaveAnswer(questionID, answer) {
+    return async (dispatch, getState) => {
+        const { currentUser } = getState()
+        try {
+            const newAnswer = await _saveQuestionAnswer({
+                author: currentUser.id,
+                questionID,
+                answer
+            })
+            console.log(newAnswer)
+
+        }
+        catch (e) {
+
         }
     }
 }

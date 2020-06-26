@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 class NewQuestion extends Component {
@@ -23,7 +23,7 @@ class NewQuestion extends Component {
         return (
             <div className='center'>
                 <Card style={{ width: '50rem', padding: '10px', border: '3px solid #00ced1' }}>
-                    <h2 style={{ margin: '20px' }}>Would you Rather ... </h2>
+                    <h2 style={{ margin: '20px', color: '#00ced1', fontweight: '800' }}>Would you Rather </h2>
                     {/* <Card.Img variant="top" src={image} /> */}
 
 

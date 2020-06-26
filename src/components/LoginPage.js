@@ -15,8 +15,8 @@ class LoginPage extends Component {
 
     setUsersList = (users) => {
         let usersList = []
-        for (user in users) {
-            var user = users[user]
+        for (let u in users) {
+            var user = users[u]
             usersList.push(user)
             console.log(user)
         }
@@ -64,13 +64,13 @@ class LoginPage extends Component {
 
         return (
             <div className='center'>
-                
+
                 <Card style={{ width: '30rem', padding: '10px', border: '3px solid #00ced1' }}>
-                <Alert variant="warning">Log in to continue</Alert>
+                    <Alert variant="warning">Log in to continue</Alert>
                     <h2>Log In</h2>
                     {/* <Card.Img variant="top" src={image} /> */}
                     <div className='center'>
-                        <img id='loginImage' src={image} />
+                        <img id='loginImage' src={image} alt='avatar' />
                     </div>
                     <Card.Body>
 

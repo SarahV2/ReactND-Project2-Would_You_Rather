@@ -39,9 +39,9 @@ class Poll extends Component {
             })
             console.log(userAnswer)
             console.log(questionID)
-            const l=await this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
+            await this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
             this.setState({
-                questionStatus:'answered'
+                questionStatus: 'answered'
             })
         }
     }
@@ -92,7 +92,7 @@ class Poll extends Component {
                     <h2 style={{ margin: '20px' }}>View Question </h2>
                     {error ? <div className="alert alert-danger" role="alert">Please Select an answer</div> : ''}
                     <div className='questionInfo'>
-                        <img className='leaderboardDisplay' src={author.avatarURL} />
+                        <img className='leaderboardDisplay' src={author.avatarURL} alt='avatar' />
 
                         <h5>{author.name} asks:</h5>
 

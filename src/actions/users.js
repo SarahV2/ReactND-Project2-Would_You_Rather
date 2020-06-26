@@ -1,5 +1,4 @@
 import { _getUsers } from '../utils/_DATA'
-import users from '../reducers/users'
 
 export const RECIEVE_USERS = 'RECIEVE_USERS'
 export const UPDATE_USER = 'UPDATE_USER'

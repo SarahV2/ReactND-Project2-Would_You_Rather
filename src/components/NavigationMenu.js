@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Navbar, Nav } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { handleLogout } from '../actions/currentUser'
 
 class NavigationMenu extends Component {
 
+
+
     logout = (e) => {
         e.preventDefault()
         this.props.dispatch(handleLogout())
     }
+
     render() {
         const { currentUser } = this.props
         return (
@@ -25,12 +28,12 @@ class NavigationMenu extends Component {
                                 <NavLink to='/leaderboard' activeClassName='active'>Leaderboard</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/new' activeClassName='active'>New Question</NavLink>
+                                <NavLink to='/add' activeClassName='active'>New Question</NavLink>
                             </li>
                             <ul>
                                 {this.props.currentUser ? <div>
-                                    <img src={currentUser.avatarURL} className='miniImage' />
-                                    <p className='userInfo' onClick={this.logout} onClick={this.logout}>Hello, {currentUser.name} <NavLink to='/'>(Logout)</NavLink></p></div> :
+                                    <img src={currentUser.avatarURL} className='miniImage' alt='current user avatar' />
+                                    <p className='userInfo' onClick={this.logout}>Hello, {currentUser.name} <NavLink to='/login'>(Logout)</NavLink></p></div> :
                                     <NavLink to='/login'><p className='userInfo'>Login</p></NavLink>}
                             </ul>
 
@@ -61,6 +64,7 @@ function mapStateToProps(state) {
     const { currentUser } = state
     return {
         currentUser
+
     }
 }
 export default connect(mapStateToProps)(NavigationMenu)

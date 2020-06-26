@@ -32,6 +32,9 @@ export default function users(state = {}, action) {
                     }
                 }
             }
+            else{
+                break;
+            }
         
 
         default:

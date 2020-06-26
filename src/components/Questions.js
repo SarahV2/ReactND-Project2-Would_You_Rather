@@ -45,8 +45,8 @@ export class Questions extends Component {
 
         if (questions) {
             let allQuestions = []
-            for (question in questions) {
-                var question = questions[question]
+            for (let q in questions) {
+                var question = questions[q]
                 allQuestions.push(question)
             }
             //allQuestions=allQuestions.sort((a, b) => allQuestions[b].timestamp - allQuestions[a].timestamp)
@@ -88,10 +88,10 @@ export class Questions extends Component {
 
 
     render() {
-        const { currentUser, users, questions } = this.props
+       // const { currentUser, users, questions } = this.props
         //   console.log(this.props)
         //   console.log(questions)
-        const { allQuestions } = this.state
+      //  const { allQuestions } = this.state
         //    console.log(allQuestions)
         const { displayList, activeTab } = this.state
         console.log(displayList)
@@ -113,7 +113,7 @@ export class Questions extends Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps=(state)=> {
     const { currentUser, users,questions } = state
     //questions = Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
 

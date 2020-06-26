@@ -53,7 +53,7 @@ export function handleSaveAnswer(questionID, answer) {
     return async (dispatch, getState) => {
         const { currentUser } = getState()
         try {
-            const newAnswer = await _saveQuestionAnswer({
+            await _saveQuestionAnswer({
                 authedUser: currentUser.id,
                 qid: questionID,
                 answer

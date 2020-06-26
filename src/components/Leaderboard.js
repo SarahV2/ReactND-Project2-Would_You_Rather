@@ -11,8 +11,8 @@ export class Leaderboard extends Component {
 
         if (users) {
             let leaderboard = []
-            for (user in users) {
-                var user = users[user]
+            for (let u in users) {
+                var user = users[u]
                 let answersCount = Object.keys(user.answers).length
                 let questionsCount = user.questions.length
                 let currentUser = {
@@ -46,7 +46,7 @@ export class Leaderboard extends Component {
                             // <li key={player.id}>{player.name}</li>
 
                             <div key={player.id} className='playerInfo'>
-                                <img className='leaderboardDisplay' src={player.avatarURL} />
+                                <img className='leaderboardDisplay' src={player.avatarURL} alt='user avatar' />
                                 <h3>{player.name}</h3>  <div>
                                     <i className="fas fa-star star" />Score:{player.score}
                                 </div>

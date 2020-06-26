@@ -6,12 +6,12 @@ class Question extends Component {
     state = {
         author: {}
     }
-    componentWillMount() {
+    componentDidMount() {
         const { question, users } = this.props
         let author = {}
         if (users) {
-            for (user in users) {
-                var user = users[user]
+            for (let u in users) {
+                var user = users[u]
                 if (user.id === question.author) {
                     console.log(user.name)
                     author.name = user.name
@@ -27,12 +27,12 @@ class Question extends Component {
         }
     }
     render() {
-        const { question, users, questionStatus } = this.props
+        const { question, questionStatus } = this.props
         const { author } = this.state
         return (
             <div className='center'>
                 <div className='questionInfo'>
-                    <img className='leaderboardDisplay' src={author.avatarURL} />
+                    <img className='leaderboardDisplay' src={author.avatarURL} alt='user avatar' />
 
                     <h5>{author.name} asks:</h5>
                     <br />

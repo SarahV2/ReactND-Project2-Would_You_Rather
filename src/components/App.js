@@ -4,8 +4,7 @@ import { getUsers } from '../actions/users'
 import { connect } from 'react-redux'
 import LoginPage from './LoginPage';
 import NavigationMenu from './NavigationMenu'
-import Test from './Test';
-import { Redirect, Link, Route } from 'react-router-dom'
+import {Route } from 'react-router-dom'
 import Questions from './Questions'
 import Leaderboard from './Leaderboard';
 import NewQuestion from './NewQuestion';
@@ -21,8 +20,8 @@ class App extends Component {
     console.log(this.props)
   }
   render() {
-    const { currentUser, users, questions } = this.props
-    console.log(users)
+    //const { currentUser, users, questions } = this.props
+    //console.log(users)
     // if (currentUser===undefined) {
     //   return <Redirect to='/login' />
 
@@ -36,7 +35,7 @@ class App extends Component {
         <Route path='/login' component={LoginPage} />
         <PrivateRoute exact path='/' component={Questions} />
         <PrivateRoute path='/leaderboard' component={Leaderboard} />
-        <PrivateRoute path='/new' component={NewQuestion} />
+        <PrivateRoute path='/add' component={NewQuestion} />
         <PrivateRoute path='/view' component={Poll} />
         {/* <LoginPage /> */}
       </div>

@@ -6,9 +6,6 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import middleware from './middleware'
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { applyMiddleware, compose } from 'redux'
-
 import { BrowserRouter } from 'react-router-dom'
 
 const store = createStore(reducer, middleware)

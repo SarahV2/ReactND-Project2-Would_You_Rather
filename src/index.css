@@ -306,5 +306,11 @@ input[type='text'] {
   /* padding-left: 2px; */
   float: left;
   padding-top: 0%;
-  text-shadow: 2px 2px 2px  black;
+  text-shadow: 2px 2px 2px black;
+}
+
+.questionPageTitle h2 {
+  margin: '20px';
+  color: '#00ced1';
+  font-weight: '800';
 }

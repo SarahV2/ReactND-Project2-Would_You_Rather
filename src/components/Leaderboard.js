@@ -45,7 +45,7 @@ export class Leaderboard extends Component {
                         {leaderboard.map((player) => (
                             // <li key={player.id}>{player.name}</li>
 
-                            <div className='playerInfo'>
+                            <div key={player.id} className='playerInfo'>
                                 <img className='leaderboardDisplay' src={player.avatarURL} />
                                 <h3>{player.name}</h3>  <div>
                                     <i className="fas fa-star star" />Score:{player.score}

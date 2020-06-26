@@ -11,7 +11,7 @@ export default class AnsweredQuestion extends Component {
         const { question, currentUser } = this.props
 
         let userAnswer = ''
-
+        console.log(question.optionOne.votes)
         if (question.optionOne.votes.includes(currentUser.id)) {
             userAnswer = 'optionOne'
         }
@@ -26,8 +26,18 @@ export default class AnsweredQuestion extends Component {
 
     render() {
         let content = ''
-        const { question } = this.props
-        const { userAnswer } = this.state
+        //const { question } = this.props
+        const { question, currentUser } = this.props
+
+        let userAnswer = ''
+        console.log(question.optionOne.votes)
+        if (question.optionOne.votes.includes(currentUser.id)) {
+            userAnswer = 'optionOne'
+        }
+        else {
+            userAnswer = 'optionTwo'
+        }
+        //const { userAnswer } = this.state
         const icon = <i className="answeredIcon fas fa-certificate" />
         let optionOne, optionTwo
         if (userAnswer === 'optionOne') {

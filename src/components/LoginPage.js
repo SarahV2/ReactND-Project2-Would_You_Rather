@@ -4,6 +4,7 @@ import image from '../utils/avatars/00.png'
 import { handleLogin } from '../actions/currentUser';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import Alert from 'react-bootstrap/Alert'
 
 class LoginPage extends Component {
 
@@ -63,7 +64,9 @@ class LoginPage extends Component {
 
         return (
             <div className='center'>
+                
                 <Card style={{ width: '30rem', padding: '10px', border: '3px solid #00ced1' }}>
+                <Alert variant="warning">Log in to continue</Alert>
                     <h2>Log In</h2>
                     {/* <Card.Img variant="top" src={image} /> */}
                     <div className='center'>

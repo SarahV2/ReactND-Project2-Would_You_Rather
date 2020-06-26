@@ -49,16 +49,29 @@ export class Questions extends Component {
                 var question = questions[question]
                 allQuestions.push(question)
             }
+            //allQuestions=allQuestions.sort((a, b) => allQuestions[b].timestamp - allQuestions[a].timestamp)
+            console.log((allQuestions))
+            // allQuestions=Object.keys(allQuestions)
+            //  .sort((a, b) => allQuestions[b].timestamp - allQuestions[a].timestamp)
 
-
-            const answeredQuestionsList = allQuestions.filter((question, index) =>
+            let answeredQuestionsList = allQuestions.filter((question, index) =>
                 question.optionOne.votes.includes(currentUser.id) || question.optionTwo.votes.includes(currentUser.id)
             )
-            //    console.log(answeredQuestionsList)
 
-            const unansweredQuestionsList = allQuestions.filter((question) =>
+            answeredQuestionsList=answeredQuestionsList.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1)
+
+            // answeredQuestionsList=Object.keys(answeredQuestionsList)
+            // .sort((a, b) => answeredQuestionsList[b].timestamp - answeredQuestionsList[a].timestamp)
+
+            // answeredQuestionsList=answeredQuestionsList
+            // .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+                console.log(answeredQuestionsList)
+
+            let unansweredQuestionsList = allQuestions.filter((question) =>
                 !(question.optionOne.votes.includes(currentUser.id)) && !(question.optionTwo.votes.includes(currentUser.id))
             )
+            unansweredQuestionsList=unansweredQuestionsList.sort((a, b) => (a.timestamp > b.timestamp) ? -1 : 1)
+
             // console.log(unansweredQuestionsList)
 
             this.setState({
@@ -101,7 +114,9 @@ export class Questions extends Component {
 }
 
 function mapStateToProps(state) {
-    const { currentUser, questions, users } = state
+    const { currentUser, users,questions } = state
+    //questions = Object.keys(questions).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+
     return {
         //loading: authedUser === null
         currentUser,

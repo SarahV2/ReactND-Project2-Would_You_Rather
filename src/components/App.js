@@ -10,6 +10,7 @@ import Questions from './Questions'
 import Leaderboard from './Leaderboard';
 import NewQuestion from './NewQuestion';
 import Poll from './Poll';
+import PrivateRoute from './PrivateRoute'
 
 class App extends Component {
 
@@ -31,11 +32,12 @@ class App extends Component {
       <div className="App" >
         <NavigationMenu />
         {/* <LoginPage /> */}
-        <Route path='/' exact component={Questions} />
+        {/* <Route path='/' exact component={Questions} /> */}
         <Route path='/login' component={LoginPage} />
-        <Route path='/leaderboard' component={Leaderboard} />
-        <Route path='/new' component={NewQuestion} />
-        <Route path='/view' component={Poll} />
+        <PrivateRoute exact path='/' component={Questions} />
+        <PrivateRoute path='/leaderboard' component={Leaderboard} />
+        <PrivateRoute path='/new' component={NewQuestion} />
+        <PrivateRoute path='/view' component={Poll} />
         {/* <LoginPage /> */}
       </div>
     )

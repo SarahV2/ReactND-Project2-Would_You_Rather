@@ -25,7 +25,7 @@ class Poll extends Component {
         })
     }
 
-    handleSubmitAnswer = (e, questionID) => {
+    handleSubmitAnswer = async (e, questionID) => {
         e.preventDefault()
         const { userAnswer } = this.state
         if (userAnswer === '') {
@@ -39,13 +39,11 @@ class Poll extends Component {
             })
             console.log(userAnswer)
             console.log(questionID)
-            this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
+            const l=await this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
+            this.setState({
+                questionStatus:'answered'
+            })
         }
-
-
-      
-
-
     }
     render() {
         const { question, author } = this.props.location

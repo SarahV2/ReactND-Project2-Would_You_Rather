@@ -44,7 +44,7 @@ class Question extends Component {
                        {question.optionOne.text}
                         <br />
                     {question.optionTwo.text}</p> */}
-                    <Link to={{ pathname: '/view', question, author, questionStatus }}>
+                    <Link to={{ pathname: `questions/${question.id}`, question, author, questionStatus }}>
 
                         <button className='btn btn-outline-info viewQuestion'>View Poll</button></Link>
 

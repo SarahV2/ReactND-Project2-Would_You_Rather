@@ -8,19 +8,19 @@ export default class AnsweredQuestion extends Component {
         userAnswer: ''
     }
     componentDidMount() {
-        const { question, currentUser } = this.props
+        // const { question, currentUser } = this.props
 
-        let userAnswer = ''
-        console.log(question.optionOne.votes)
-        if (question.optionOne.votes.includes(currentUser.id)) {
-            userAnswer = 'optionOne'
-        }
-        else {
-            userAnswer = 'optionTwo'
-        }
-        this.setState({
-            userAnswer
-        })
+        // let userAnswer = ''
+        // console.log(question.optionOne.votes)
+        // if (question.optionOne.votes.includes(currentUser.id)) {
+        //     userAnswer = 'optionOne'
+        // }
+        // else if(question.optionTwo.votes.includes(currentUser.id)){
+        //     userAnswer = 'optionTwo'
+        // }
+        // this.setState({
+        //     userAnswer
+        // })
 
     }
 
@@ -31,10 +31,11 @@ export default class AnsweredQuestion extends Component {
 
         let userAnswer = ''
         console.log(question.optionOne.votes)
+        console.log(question.optionTwo.votes)
         if (question.optionOne.votes.includes(currentUser.id)) {
             userAnswer = 'optionOne'
         }
-        else {
+        else if (question.optionTwo.votes.includes(currentUser.id)) {
             userAnswer = 'optionTwo'
         }
         //const { userAnswer } = this.state

@@ -58,10 +58,10 @@ export function handleSaveAnswer(questionID, answer) {
                 qid: questionID,
                 answer
             })
+            //console.log(getState())
+            await dispatch(saveAnswer(questionID, currentUser.id, answer))
             console.log(getState())
-            dispatch(saveAnswer(questionID, currentUser.id, answer))
-            console.log(getState())
-            dispatch(updateUser('answers', currentUser.id, questionID,answer))
+            await dispatch(updateUser('answers', currentUser.id, questionID,answer))
             console.log(getState())
 
 

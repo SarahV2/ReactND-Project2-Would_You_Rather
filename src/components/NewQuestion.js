@@ -1,25 +1,34 @@
 import React, { Component } from 'react'
 import { Card } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { handleAddQuestion } from '../actions/questions'
 class NewQuestion extends Component {
 
     state = {
         optionOne: '',
-        optionTwo: ''
+        optionTwo: '',
+        submitted:false
     }
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
-    handleSubmit = (e) => {
+    handleSubmit =async (e) => {
         e.preventDefault()
         const { optionOne, optionTwo } = this.state
-        this.props.dispatch(handleAddQuestion(optionOne, optionTwo))
+        await this.props.dispatch(handleAddQuestion(optionOne, optionTwo))
+        this.setState({
+            submitted:true
+        })
     }
+    
     render() {
-        const { optionOne, optionTwo } = this.state
+        const { optionOne, optionTwo,submitted } = this.state
+        if (submitted){
+            return (<Redirect to='/' />)
+        }
         return (
             <div className='center'>
                 <Card style={{ width: '50rem', padding: '10px', border: '3px solid #00ced1' }}>

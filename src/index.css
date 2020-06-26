@@ -314,3 +314,11 @@ input[type='text'] {
   color: '#00ced1';
   font-weight: '800';
 }
+
+.error{
+    margin-top:10%;
+    border: 3px solid turquoise;
+    margin-bottom: 2%;
+    display: inline-block;
+    width: 70%;
+}

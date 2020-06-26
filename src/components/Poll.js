@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { handleSaveAnswer } from '../actions/questions'
 import { Card } from 'react-bootstrap'
 import AnsweredQuestion from './AnsweredQuestion'
+import NotFound from './NotFound'
 
 
 class Poll extends Component {
@@ -39,24 +40,29 @@ class Poll extends Component {
             })
             console.log(userAnswer)
             console.log(questionID)
-            await this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
-            this.setState({
-                questionStatus: 'answered'
-            })
+             this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
+             .then(success=>{
+                this.setState({
+                    questionStatus: 'answered'
+                })
+             })
+
         }
     }
     render() {
-        const { question, author } = this.props.location
-        const { currentUser } = this.props
+        
+        console.log(this.props.match.params.question_id)
+        //const question=this.props.match.params.question_id
+        const {author,currentUser,question}=this.props
+        //const { question, author } = this.props.location
+        //const { currentUser } = this.props
         const { questionStatus, error } = this.state
 
         let content = ''
 
-        if (!question) {
+        if (!question||!author) {
             return (
-                <div className="alert alert-danger" role="alert">
-                    Error Loading Question
-                </div>
+               <NotFound/>
             )
         }
 
@@ -112,9 +118,19 @@ class Poll extends Component {
 
     }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state,props) => {
+    let {questions,users}=state
+    const {question_id}=props.match.params
+    const question=questions[question_id]
+    let author
+    if(question){
+    author=users[question.author]
+    }
+    console.log(author)
     return {
-        currentUser: state.currentUser
+        currentUser: state.currentUser,
+        question,
+        author:author===null?'':author
     }
 }
 

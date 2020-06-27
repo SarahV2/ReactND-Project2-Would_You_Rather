@@ -20,6 +20,8 @@ The app allows the users to do the following:
   <img src='/screenshots/sc2.PNG'>
   </div>
   
+ ## Avatars
+ Users' avatars were created using <a href="https://getavataaars.com/">Avataaars Generator</a>
   
 ## Data
 <details>

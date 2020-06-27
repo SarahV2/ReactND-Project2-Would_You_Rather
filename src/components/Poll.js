@@ -13,11 +13,16 @@ class Poll extends Component {
         error: false
     }
     componentDidMount() {
-        const { questionStatus } = this.props.location
+        const { question,currentUser } = this.props
+        const answerStatus= question.optionOne.votes.includes(currentUser.id) || question.optionTwo.votes.includes(currentUser.id)
+        if(answerStatus){
+            this.setState({
+                questionStatus:'answered'
+            })
 
-        this.setState({
-            questionStatus
-        })
+        }
+
+
     }
 
     handleChange = (e) => {

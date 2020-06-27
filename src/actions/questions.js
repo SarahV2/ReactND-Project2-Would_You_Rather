@@ -20,7 +20,6 @@ export function addQuestion(question) {
 }
 
 export function saveAnswer(questionID, userID, answer) {
-    console.log(userID)
     return {
         type: SAVE_ANSWER,
         questionID,
@@ -38,7 +37,6 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
                 optionTwoText,
                 author: currentUser.id,
             })
-            console.log(question)
             dispatch(addQuestion(question))
             dispatch(updateUser('questions', question.author, question.id))
         }

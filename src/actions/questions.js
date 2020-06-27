@@ -41,7 +41,6 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
             console.log(question)
             dispatch(addQuestion(question))
             dispatch(updateUser('questions', question.author, question.id))
-            //dispatch(hideLoading())
         }
         catch (e) {
             alert(e)
@@ -58,14 +57,8 @@ export function handleSaveAnswer(questionID, answer) {
                 qid: questionID,
                 answer
             })
-            //console.log(getState())
             await dispatch(saveAnswer(questionID, currentUser.id, answer))
-            console.log(getState())
             await dispatch(updateUser('answers', currentUser.id, questionID,answer))
-            console.log(getState())
-
-
-
         }
         catch (e) {
 
@@ -78,7 +71,6 @@ export function getInitialQuestions() {
         return (_getQuestions())
             .then((questions) => {
                 dispatch(recieveQuestions(questions))
-                console.log(questions)
             })
     }
 }

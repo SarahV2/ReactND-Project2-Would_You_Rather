@@ -1,8 +1,6 @@
 import { _getUsers } from '../utils/_DATA'
-
 export const RECIEVE_USERS = 'RECIEVE_USERS'
 export const UPDATE_USER = 'UPDATE_USER'
-
 
 
 export function recieveUsers(users) {
@@ -28,11 +26,10 @@ export function getUsers() {
         return (_getUsers())
             .then((users) => {
                 dispatch(recieveUsers(users))
-                console.log(users)
             })
     }
 }
-//user.questions.push(questionID)
+
 export function handleUpdateUser(targetType, userID, targetID) {
     return (dispatch) => {
         dispatch(updateUser(targetType, userID, targetID))

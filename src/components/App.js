@@ -21,18 +21,9 @@ class App extends Component {
     console.log(this.props)
   }
   render() {
-    //const { currentUser, users, questions } = this.props
-    //console.log(users)
-    // if (currentUser===undefined) {
-    //   return <Redirect to='/login' />
-
-    // }
-    //console.log(this.props)
     return (
       <div className="App" >
         <NavigationMenu />
-        {/* <LoginPage /> */}
-        {/* <Route path='/' exact component={Questions} /> */}
         <Switch>
         <Route path='/login' component={LoginPage} />
         <PrivateRoute exact path='/' component={Questions} />
@@ -41,7 +32,6 @@ class App extends Component {
         <PrivateRoute path='/questions/:question_id' component={Poll} />
         <Route component={NotFound}/>
         </Switch>
-        {/* <LoginPage /> */}
       </div>
     )
   }
@@ -50,7 +40,6 @@ class App extends Component {
 function mapStateToProps(state) {
   const { currentUser, questions, users } = state
   return {
-    //loading: authedUser === null
     currentUser,
     users,
     questions

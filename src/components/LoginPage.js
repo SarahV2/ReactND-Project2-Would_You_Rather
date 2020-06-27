@@ -13,19 +13,13 @@ class LoginPage extends Component {
         chosenUser: '',
     }
 
-    componentDidMount(){
-      //  console.log(this.props.lastLocation)
-    }
     
-
     setUsersList = (users) => {
         let usersList = []
         for (let u in users) {
             var user = users[u]
             usersList.push(user)
-            // console.log(user)
         }
-
         return usersList
     }
 
@@ -45,7 +39,6 @@ class LoginPage extends Component {
         const { chosenUser } = this.state
         if (chosenUser) {
             this.props.dispatch(handleLogin(chosenUser))
-            // console.log(chosenUser)
             this.setState({
                 loggedIn: true
             })
@@ -54,13 +47,11 @@ class LoginPage extends Component {
     }
 
     render() {
-        console.log(this.props.location)
-
         const { loggedIn } = this.state
         const { users } = this.props
         var statePath=this.props.location.state
         let list = []
-        var previousPath='/'
+
         if (loggedIn === true) {
             let targetPath
             if(statePath){
@@ -84,7 +75,6 @@ class LoginPage extends Component {
                   
                     <h2>Log In</h2>
                     <Alert variant="warning">Log in to continue</Alert>
-                    {/* <Card.Img variant="top" src={image} /> */}
                     <div className='center'>
                         <img id='loginImage' src={image} alt='avatar' />
                     </div>

@@ -22,8 +22,7 @@ class Question extends Component {
                     author
                 })
             }
-            // const authorInfo = users.filter(user => user.id === question.author)
-            // console.log(authorInfo)
+
         }
     }
     render() {
@@ -34,7 +33,7 @@ class Question extends Component {
                 <div className='questionInfo'>
                     <img className='leaderboardDisplay' src={author.avatarURL} alt='user avatar' />
 
-                    <h5>{author.name} asks:</h5>
+                    <h5>{author.name} {questionStatus==='unanswered'?'asks':'asked'}:</h5>
                     <br />
                     <h3 className='question'>Would you rather</h3>
                     <p>

@@ -1,7 +1,5 @@
 import { RECIEVE_USERS, UPDATE_USER } from '../actions/users'
 
-
-
 export default function users(state = {}, action) {
     switch (action.type) {
         case RECIEVE_USERS:
@@ -25,8 +23,7 @@ export default function users(state = {}, action) {
                     [action.userID]: {
                         ...state[action.userID],
                         answers: {
-                            
-                            
+                              
                             ...state[action.userID].answers,
                             [action.targetID]:action.answer}
                     }
@@ -36,7 +33,6 @@ export default function users(state = {}, action) {
                 break;
             }
         
-
         default:
             return state
     }

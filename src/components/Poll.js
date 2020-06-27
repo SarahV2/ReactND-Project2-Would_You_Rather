@@ -14,14 +14,14 @@ class Poll extends Component {
     }
     componentDidMount() {
         const { question,currentUser } = this.props
+        if(question){
         const answerStatus= question.optionOne.votes.includes(currentUser.id) || question.optionTwo.votes.includes(currentUser.id)
         if(answerStatus){
             this.setState({
                 questionStatus:'answered'
             })
-
         }
-
+    }
 
     }
 
@@ -43,27 +43,15 @@ class Poll extends Component {
             this.setState({
                 error: false
             })
-            console.log(userAnswer)
-            console.log(questionID)
-             this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
-             .then(success=>{
+             await this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
                 this.setState({
                     questionStatus: 'answered'
                 })
-             })
-
         }
     }
-    render() {
-        
-        console.log(this.props.match.params.question_id)
-        //const question=this.props.match.params.question_id
+    render() {        
         const {author,currentUser,question}=this.props
-        //const { question, author } = this.props.location
-        //const { currentUser } = this.props
         const { questionStatus, error } = this.state
-
-        let content = ''
 
         if (!question||!author) {
             return (
@@ -71,7 +59,7 @@ class Poll extends Component {
             )
         }
 
-
+        let content = ''
 
         if (questionStatus === 'answered') {
 
@@ -94,8 +82,6 @@ class Poll extends Component {
                 </div>
         }
 
-
-
         return (
             <div className='center'>
                 <Card style={{ width: '50rem', padding: '10px', border: '3px solid #00ced1' }}>
@@ -103,19 +89,14 @@ class Poll extends Component {
                     {error ? <div className="alert alert-danger" role="alert">Please Select an answer</div> : ''}
                     <div className='questionInfo'>
                         <img className='leaderboardDisplay' src={author.avatarURL} alt='avatar' />
-                        <h5>{author.name} asks:</h5>
-
+                        <h5>{author.name} {questionStatus === 'answered'?'asked':'asks'}:</h5>
                         <br />
                         {content}
                         <br />
                     </div>
                 </Card>
             </div>
-
         )
-
-
-
     }
 }
 const mapStateToProps = (state,props) => {

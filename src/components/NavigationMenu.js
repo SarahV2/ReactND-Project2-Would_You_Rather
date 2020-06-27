@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav,Form,FormControl,Button } from 'react-bootstrap'
+import { Navbar, Nav} from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { handleLogout } from '../actions/currentUser'
 
@@ -17,7 +17,7 @@ class NavigationMenu extends Component {
         const { currentUser } = this.props
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <p className='gameTitle'>Would You Rather</p>
+                 <NavLink to='/'><p className='gameTitle'>Would You Rather</p></NavLink>
                 <Nav className="mr-auto">
                     <nav className='nav'>
                         <ul>
@@ -47,30 +47,7 @@ class NavigationMenu extends Component {
                                     <img src={currentUser.avatarURL} className='miniImage' alt='current user avatar' />
                                     <p className='userInfo' onClick={this.logout}>Hello, {currentUser.name} <NavLink className='loginLink' to='/login'>(Logout)</NavLink></p></div> :
                                     <NavLink to='/login'><p className='userInfo loginButton'>Login</p></NavLink>}
-     
-  
-    
-{/* 
-                <Nav>
-                    <ul>
-                
-                                {this.props.currentUser ? <div>
-                                    <img src={currentUser.avatarURL} className='miniImage' alt='current user avatar' />
-                                    <p className='userInfo' onClick={this.logout}>Hello, {currentUser.name} <NavLink to='/login'>(Logout)</NavLink></p></div> :
-                                    <NavLink to='/login'><p className='userInfo'>Login</p></NavLink>}
-                            </ul>
 
-                            </Nav> */}
-                {/* 
-                <Nav >
-                    <nav className='nav'>
-                        {this.props.currentUser ? <div>
-                            <div><img src={currentUser.avatarURL} className='miniImage' /></div>
-                            <p className='userInfo' onClick={this.logout} onClick={this.logout}>Hello, {currentUser.name} <NavLink to='/'>(Logout)</NavLink></p></div> :
-                            <NavLink to='/login'><p className='userInfo'>Login</p></NavLink>
-                        }
-                    </nav>
-                </Nav> */}
 
             </Navbar>
         )

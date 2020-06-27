@@ -17,8 +17,6 @@ class App extends Component {
   componentDidMount() {
     this.props.dispatch(getInitialQuestions())
     this.props.dispatch(getUsers())
-    console.log("Welcome")
-    console.log(this.props)
   }
   render() {
     return (
@@ -37,7 +35,7 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps=(state)=> {
   const { currentUser, questions, users } = state
   return {
     currentUser,

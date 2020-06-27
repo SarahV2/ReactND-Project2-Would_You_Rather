@@ -45,7 +45,7 @@ code {
 }
 
 .gameTitle:hover {
-  color: royalblue;
+  color: orange;
   cursor: pointer;
 }
 
@@ -121,7 +121,6 @@ nav .userInfo a:hover {
   width: 50%;
   object-fit: cover;
 }
-
 
 input[type='text'] {
   width: 100%;
@@ -209,7 +208,6 @@ input[type='text'] {
   border: 2px solid rgba(0,0,0,0.2);
   margin-bottom: 2%;
   display: inline-block;
-
   width: 100%;
 }
 

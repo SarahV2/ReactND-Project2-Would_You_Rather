@@ -58,7 +58,7 @@ export function handleSaveAnswer(questionID, answer) {
                 answer
             })
             await dispatch(saveAnswer(questionID, currentUser.id, answer))
-            await dispatch(updateUser('answers', currentUser.id, questionID,answer))
+            await dispatch(updateUser('answers', currentUser.id, questionID, answer))
         }
         catch (e) {
 

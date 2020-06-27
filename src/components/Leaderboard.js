@@ -46,7 +46,7 @@ export class Leaderboard extends Component {
                             <div key={player.id} className='playerInfo'>
                                 <img className='leaderboardDisplay' src={player.avatarURL} alt='user avatar' />
                                 <h3>{player.name}</h3>  <div>
-                                    <i className="fas fa-star star"/>Score:{player.score}
+                                    <i className="fas fa-star star" />Score:{player.score}
                                 </div>
                                 <span><p>Answered Questions: {player.answersCount}<br />
                                     Created Questions: {player.questionsCount}</p></span>

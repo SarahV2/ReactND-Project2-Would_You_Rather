@@ -65,7 +65,7 @@ code {
   padding-left: 30px;
 }
 
-.nav .userInfo a p:hover{
+.nav .userInfo a p:hover {
   color: red;
   margin-right: 50;
 }
@@ -94,13 +94,13 @@ nav .userInfo {
   margin-top: 0%;
   margin-bottom: 0px;
 }
-nav  .loginButton {
+nav .loginButton {
   font-size: 20px !important;
   margin-right: 100%;
 }
 
-nav .miniImage{
-margin-left: 30%;
+nav .miniImage {
+  margin-left: 30%;
 }
 
 nav .userInfo a {
@@ -131,7 +131,7 @@ input[type='text'] {
 }
 
 .playerInfo {
-  border: 3px solid rgba(0,0,0,0.2);
+  border: 3px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 2%;
   display: inline-block;
   width: 60%;
@@ -205,7 +205,7 @@ input[type='text'] {
 }
 
 .questionInfo {
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 2%;
   display: inline-block;
   width: 100%;
@@ -249,7 +249,7 @@ input[type='text'] {
 
   margin: auto;
   margin-bottom: 2%;
-  border: 2px solid rgba(0,0,0,0.2);
+  border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .answered {
@@ -279,21 +279,19 @@ input[type='text'] {
   margin-left: 10%;
 }
 
-
 .answerButton {
   margin-top: 2%;
 }
 
-.progress-bar {  
-  background-color: #4AA69F;
+.progress-bar {
+  background-color: #4aa69f;
 }
 
 .answeredIcon {
   font-size: 50px;
-  color:rgba(74, 166, 159, 0.7);
+  color: rgba(74, 166, 159, 0.7);
   float: left;
   padding-top: 0%;
-
 }
 
 .questionPageTitle h2 {
@@ -302,15 +300,15 @@ input[type='text'] {
   font-weight: '800';
 }
 
-.error{
-    margin-top:10%;
-    border: 3px solid turquoise;
-    margin-bottom: 2%;
-    display: inline-block;
-    width: 70%;
+.error {
+  margin-top: 10%;
+  border: 3px solid turquoise;
+  margin-bottom: 2%;
+  display: inline-block;
+  width: 70%;
 }
 
- .note {
-font-size: 12px !important;
-color: turquoise;
+.note {
+  font-size: 12px !important;
+  color: turquoise;
 }

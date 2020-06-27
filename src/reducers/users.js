@@ -23,16 +23,17 @@ export default function users(state = {}, action) {
                     [action.userID]: {
                         ...state[action.userID],
                         answers: {
-                              
+
                             ...state[action.userID].answers,
-                            [action.targetID]:action.answer}
+                            [action.targetID]: action.answer
+                        }
                     }
                 }
             }
-            else{
+            else {
                 break;
             }
-        
+
         default:
             return state
     }

@@ -13,7 +13,7 @@ class LoginPage extends Component {
         chosenUser: '',
     }
 
-    
+
     setUsersList = (users) => {
         let usersList = []
         for (let u in users) {
@@ -49,16 +49,16 @@ class LoginPage extends Component {
     render() {
         const { loggedIn } = this.state
         const { users } = this.props
-        var statePath=this.props.location.state
+        var statePath = this.props.location.state
         let list = []
 
         if (loggedIn === true) {
             let targetPath
-            if(statePath){
-                targetPath=statePath.previousPath
+            if (statePath) {
+                targetPath = statePath.previousPath
             }
-            else{
-                targetPath='/'
+            else {
+                targetPath = '/'
             }
             return <Redirect to={targetPath} />
         }
@@ -72,7 +72,7 @@ class LoginPage extends Component {
             <div className='center'>
 
                 <Card style={{ width: '30rem', padding: '10px', border: '3px solid #00ced1' }}>
-                  
+
                     <h2>Log In</h2>
                     <Alert variant="warning">Log in to continue</Alert>
                     <div className='center'>

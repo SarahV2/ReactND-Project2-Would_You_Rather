@@ -8,25 +8,25 @@ class NewQuestion extends Component {
     state = {
         optionOne: '',
         optionTwo: '',
-        submitted:false
+        submitted: false
     }
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
-    handleSubmit =async (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault()
         const { optionOne, optionTwo } = this.state
         await this.props.dispatch(handleAddQuestion(optionOne, optionTwo))
         this.setState({
-            submitted:true
+            submitted: true
         })
     }
-    
+
     render() {
-        const { optionOne, optionTwo,submitted } = this.state
-        if (submitted){
+        const { optionOne, optionTwo, submitted } = this.state
+        if (submitted) {
             return (<Redirect to='/' />)
         }
         return (

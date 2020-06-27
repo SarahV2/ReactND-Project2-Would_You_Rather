@@ -6,18 +6,18 @@ class Question extends Component {
     state = {
         author: {}
     }
-    
+
     componentDidMount() {
         const { question, users } = this.props
-        let author=users[question.author]
-        author={
-            name:author.name,
-            avatarURL:author.avatarURL
+        let author = users[question.author]
+        author = {
+            name: author.name,
+            avatarURL: author.avatarURL
         }
-                this.setState({
-                    author
-                })
-            }
+        this.setState({
+            author
+        })
+    }
 
     render() {
         const { question, questionStatus } = this.props
@@ -26,7 +26,7 @@ class Question extends Component {
             <div className='center'>
                 <div className='questionInfo'>
                     <img className='leaderboardDisplay' src={author.avatarURL} alt='user avatar' />
-                    <h5>{author.name} {questionStatus==='unanswered'?'asks':'asked'}:</h5>
+                    <h5>{author.name} {questionStatus === 'unanswered' ? 'asks' : 'asked'}:</h5>
                     <br />
                     <h3 className='question'>Would you rather</h3>
                     <p>

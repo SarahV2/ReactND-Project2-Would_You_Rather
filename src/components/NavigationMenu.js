@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav} from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { handleLogout } from '../actions/currentUser'
 
 class NavigationMenu extends Component {
-
-
 
     logout = (e) => {
         e.preventDefault()
@@ -17,7 +15,7 @@ class NavigationMenu extends Component {
         const { currentUser } = this.props
         return (
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                 <NavLink to='/'><p className='gameTitle'>Would You Rather</p></NavLink>
+                <NavLink to='/'><p className='gameTitle'>Would You Rather</p></NavLink>
                 <Nav className="mr-auto">
                     <nav className='nav'>
                         <ul>
@@ -30,25 +28,16 @@ class NavigationMenu extends Component {
                             <li>
                                 <NavLink to='/add' activeClassName='active'>New Question</NavLink>
                             </li>
-
-
                         </ul>
-
-
-                   
-
-
                     </nav>
 
 
                 </Nav>
-              
+
                 {this.props.currentUser ? <div className='currentUser'>
-                                    <img src={currentUser.avatarURL} className='miniImage' alt='current user avatar' />
-                                    <p className='userInfo' onClick={this.logout}>Hello, {currentUser.name} <NavLink className='loginLink' to='/login'>(Logout)</NavLink></p></div> :
-                                    <NavLink to='/login'><p className='userInfo loginButton'>Login</p></NavLink>}
-
-
+                    <img src={currentUser.avatarURL} className='miniImage' alt='current user avatar' />
+                    <p className='userInfo' onClick={this.logout}>Hello, {currentUser.name} <NavLink className='loginLink' to='/login'>(Logout)</NavLink></p></div> :
+                    <NavLink to='/login'><p className='userInfo loginButton'>Login</p></NavLink>}
             </Navbar>
         )
     }

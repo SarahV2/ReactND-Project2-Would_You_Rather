@@ -13,15 +13,15 @@ class Poll extends Component {
         error: false
     }
     componentDidMount() {
-        const { question,currentUser } = this.props
-        if(question){
-        const answerStatus= question.optionOne.votes.includes(currentUser.id) || question.optionTwo.votes.includes(currentUser.id)
-        if(answerStatus){
-            this.setState({
-                questionStatus:'answered'
-            })
+        const { question, currentUser } = this.props
+        if (question) {
+            const answerStatus = question.optionOne.votes.includes(currentUser.id) || question.optionTwo.votes.includes(currentUser.id)
+            if (answerStatus) {
+                this.setState({
+                    questionStatus: 'answered'
+                })
+            }
         }
-    }
 
     }
 
@@ -43,19 +43,19 @@ class Poll extends Component {
             this.setState({
                 error: false
             })
-             await this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
-                this.setState({
-                    questionStatus: 'answered'
-                })
+            await this.props.dispatch(handleSaveAnswer(questionID, userAnswer))
+            this.setState({
+                questionStatus: 'answered'
+            })
         }
     }
-    render() {        
-        const {author,currentUser,question}=this.props
+    render() {
+        const { author, currentUser, question } = this.props
         const { questionStatus, error } = this.state
 
-        if (!question||!author) {
+        if (!question || !author) {
             return (
-               <NotFound/>
+                <NotFound />
             )
         }
 
@@ -89,7 +89,7 @@ class Poll extends Component {
                     {error ? <div className="alert alert-danger" role="alert">Please Select an answer</div> : ''}
                     <div className='questionInfo'>
                         <img className='leaderboardDisplay' src={author.avatarURL} alt='avatar' />
-                        <h5>{author.name} {questionStatus === 'answered'?'asked':'asks'}:</h5>
+                        <h5>{author.name} {questionStatus === 'answered' ? 'asked' : 'asks'}:</h5>
                         <br />
                         {content}
                         <br />
@@ -99,19 +99,19 @@ class Poll extends Component {
         )
     }
 }
-const mapStateToProps = (state,props) => {
-    let {questions,users}=state
-    const {question_id}=props.match.params
-    const question=questions[question_id]
+const mapStateToProps = (state, props) => {
+    let { questions, users } = state
+    const { question_id } = props.match.params
+    const question = questions[question_id]
     let author
-    if(question){
-    author=users[question.author]
+    if (question) {
+        author = users[question.author]
     }
     console.log(author)
     return {
         currentUser: state.currentUser,
         question,
-        author:author===null?'':author
+        author: author === null ? '' : author
     }
 }
 

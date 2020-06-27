@@ -27,7 +27,6 @@ export class Leaderboard extends Component {
 
             }
             leaderboard = leaderboard.sort((a, b) => (a.score > b.score) ? -1 : 1)
-            console.log(leaderboard)
             this.setState({
                 leaderboard
             })

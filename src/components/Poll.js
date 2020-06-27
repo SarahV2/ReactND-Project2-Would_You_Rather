@@ -107,7 +107,6 @@ const mapStateToProps = (state, props) => {
     if (question) {
         author = users[question.author]
     }
-    console.log(author)
     return {
         currentUser: state.currentUser,
         question,

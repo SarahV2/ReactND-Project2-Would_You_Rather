@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav,Form,FormControl,Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { handleLogout } from '../actions/currentUser'
 
@@ -30,19 +30,37 @@ class NavigationMenu extends Component {
                             <li>
                                 <NavLink to='/add' activeClassName='active'>New Question</NavLink>
                             </li>
-                            <ul>
+
+
+                        </ul>
+
+
+                   
+
+
+                    </nav>
+
+
+                </Nav>
+              
+                {this.props.currentUser ? <div className='currentUser'>
+                                    <img src={currentUser.avatarURL} className='miniImage' alt='current user avatar' />
+                                    <p className='userInfo' onClick={this.logout}>Hello, {currentUser.name} <NavLink className='loginLink' to='/login'>(Logout)</NavLink></p></div> :
+                                    <NavLink to='/login'><p className='userInfo loginButton'>Login</p></NavLink>}
+     
+  
+    
+{/* 
+                <Nav>
+                    <ul>
+                
                                 {this.props.currentUser ? <div>
                                     <img src={currentUser.avatarURL} className='miniImage' alt='current user avatar' />
                                     <p className='userInfo' onClick={this.logout}>Hello, {currentUser.name} <NavLink to='/login'>(Logout)</NavLink></p></div> :
                                     <NavLink to='/login'><p className='userInfo'>Login</p></NavLink>}
                             </ul>
 
-                        </ul>
-
-                    </nav>
-
-
-                </Nav>
+                            </Nav> */}
                 {/* 
                 <Nav >
                     <nav className='nav'>

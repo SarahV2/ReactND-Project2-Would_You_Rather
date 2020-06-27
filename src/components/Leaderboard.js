@@ -43,7 +43,6 @@ export class Leaderboard extends Component {
                     <h2 style={{ margin: '20px' }}>Leaderboard </h2>
                     <div className='leaderboardContainer' >
                         {leaderboard.map((player) => (
-                            // <li key={player.id}>{player.name}</li>
 
                             <div key={player.id} className='playerInfo'>
                                 <img className='leaderboardDisplay' src={player.avatarURL} alt='user avatar' />

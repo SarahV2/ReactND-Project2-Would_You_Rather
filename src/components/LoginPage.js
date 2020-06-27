@@ -81,8 +81,9 @@ class LoginPage extends Component {
             <div className='center'>
 
                 <Card style={{ width: '30rem', padding: '10px', border: '3px solid #00ced1' }}>
-                    <Alert variant="warning">Log in to continue</Alert>
+                  
                     <h2>Log In</h2>
+                    <Alert variant="warning">Log in to continue</Alert>
                     {/* <Card.Img variant="top" src={image} /> */}
                     <div className='center'>
                         <img id='loginImage' src={image} alt='avatar' />

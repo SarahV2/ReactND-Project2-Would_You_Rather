@@ -32,6 +32,17 @@ export default class AnsweredQuestion extends Component {
         let userAnswer = ''
         console.log(question.optionOne.votes)
         console.log(question.optionTwo.votes)
+
+        let firstOptionCount=(question.optionOne.votes).length
+        let secondtOptionCount=(question.optionTwo.votes).length
+        let totalCount=firstOptionCount+secondtOptionCount
+        console.log(firstOptionCount)
+        let firstOptionPercentage=(firstOptionCount/totalCount)*100
+        let secondtOptionPercentage=(secondtOptionCount/totalCount)*100
+        console.log(firstOptionPercentage)
+        console.log(secondtOptionPercentage)
+
+        
         if (question.optionOne.votes.includes(currentUser.id)) {
             userAnswer = 'optionOne'
         }

@@ -74,7 +74,6 @@ class Poll extends Component {
 
         }
         else {
-            // content = <p>... {question.optionOne.text}...</p>
             content =
                 <div>
                     <div className='parentQ'>
@@ -99,15 +98,11 @@ class Poll extends Component {
                     {error ? <div className="alert alert-danger" role="alert">Please Select an answer</div> : ''}
                     <div className='questionInfo'>
                         <img className='leaderboardDisplay' src={author.avatarURL} alt='avatar' />
-
                         <h5>{author.name} asks:</h5>
 
                         <br />
-
-
                         {content}
                         <br />
-
                     </div>
                 </Card>
             </div>

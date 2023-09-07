@@ -4,7 +4,7 @@ import { getUsers } from '../actions/users'
 import { connect } from 'react-redux'
 import LoginPage from './LoginPage';
 import NavigationMenu from './NavigationMenu'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Questions from './Questions'
 import Leaderboard from './Leaderboard';
 import NewQuestion from './NewQuestion';
@@ -22,14 +22,14 @@ class App extends Component {
     return (
       <div className="App" >
         <NavigationMenu />
-        <Switch>
+        <Routes>
           <Route path='/login' component={LoginPage} />
-          <PrivateRoute exact path='/' component={Questions} />
+          <PrivateRoute path='/' component={Questions} />
           <PrivateRoute path='/leaderboard' component={Leaderboard} />
           <PrivateRoute path='/add' component={NewQuestion} />
           <PrivateRoute path='/questions/:question_id' component={Poll} />
           <Route component={NotFound} />
-        </Switch>
+        </Routes>
       </div>
     )
   }

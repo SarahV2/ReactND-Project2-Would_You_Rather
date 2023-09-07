@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { redirect } from 'react-router-dom'
 import { handleAddQuestion } from '../actions/questions'
 class NewQuestion extends Component {
 
@@ -27,7 +27,7 @@ class NewQuestion extends Component {
     render() {
         const { optionOne, optionTwo, submitted } = this.state
         if (submitted) {
-            return (<Redirect to='/' />)
+            return redirect('/')
         }
         return (
             <div className='center'>

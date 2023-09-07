@@ -20,13 +20,13 @@ class NavigationMenu extends Component {
                     <nav className='nav'>
                         <ul>
                             <li>
-                                <NavLink to='/' exact activeClassName='active'>Questions</NavLink>
+                                <NavLink to='/'className={({isActive}) => (isActive ? "active" : 'none')}>Questions</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/leaderboard' activeClassName='active'>Leaderboard</NavLink>
+                                <NavLink to='/leaderboard' className={({isActive}) => (isActive ? "active" : 'none')}>Leaderboard</NavLink>
                             </li>
                             <li>
-                                <NavLink to='/add' activeClassName='active'>New Question</NavLink>
+                                <NavLink to='/add' className={({isActive}) => (isActive ? "active" : 'none')}>New Question</NavLink>
                             </li>
                         </ul>
                     </nav>

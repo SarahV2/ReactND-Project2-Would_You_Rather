@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 import image from '../utils/avatars/00.png'
 import { handleLogin } from '../actions/currentUser';
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { redirect } from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert'
 
 class LoginPage extends Component {
@@ -60,7 +60,7 @@ class LoginPage extends Component {
             else {
                 targetPath = '/'
             }
-            return <Redirect to={targetPath} />
+            return redirect(targetPath)
         }
 
         if (users) {

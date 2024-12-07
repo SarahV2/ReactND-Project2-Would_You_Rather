@@ -23,12 +23,12 @@ class App extends Component {
       <div className="App" >
         <NavigationMenu />
         <Routes>
-          <Route path='/login' component={LoginPage} />
-          <PrivateRoute path='/' component={Questions} />
+          <Route path='/login' element={<LoginPage/>} />
+          {/* <PrivateRoute path='/' component={Questions} />
           <PrivateRoute path='/leaderboard' component={Leaderboard} />
           <PrivateRoute path='/add' component={NewQuestion} />
-          <PrivateRoute path='/questions/:question_id' component={Poll} />
-          <Route component={NotFound} />
+          <PrivateRoute path='/questions/:question_id' component={Poll} /> */}
+          <Route path='*' element={<NotFound/>} />
         </Routes>
       </div>
     )

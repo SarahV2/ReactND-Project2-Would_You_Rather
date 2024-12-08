@@ -1,47 +1,34 @@
-import React, { Component } from 'react';
-import { getInitialQuestions } from '../actions/questions';
-import { getUsers } from '../actions/users'
-import { connect } from 'react-redux'
-import LoginPage from './LoginPage';
-import NavigationMenu from './NavigationMenu'
-import { Route, Routes } from 'react-router-dom'
-import Questions from './Questions'
-import Leaderboard from './Leaderboard';
-import NewQuestion from './NewQuestion';
-import Poll from './Poll';
-import PrivateRoute from './PrivateRoute'
-import NotFound from './NotFound';
+import React, { Component } from "react";
+import { getInitialQuestions } from "../actions/questions";
+import { getUsers } from "../actions/users";
+import { connect } from "react-redux";
+import NavigationMenu from "./NavigationMenu";
+import { Outlet } from "react-router-dom";
 
 class App extends Component {
-
   componentDidMount() {
-    this.props.dispatch(getInitialQuestions())
-    this.props.dispatch(getUsers())
+    this.props.dispatch(getInitialQuestions());
+    this.props.dispatch(getUsers());
   }
   render() {
     return (
-      <div className="App" >
+      <div className="App">
         <NavigationMenu />
-        <Routes>
-          <Route path='/login' element={<LoginPage/>} />
-          {/* <PrivateRoute path='/' component={Questions} />
-          <PrivateRoute path='/leaderboard' component={Leaderboard} />
-          <PrivateRoute path='/add' component={NewQuestion} />
-          <PrivateRoute path='/questions/:question_id' component={Poll} /> */}
-          <Route path='*' element={<NotFound/>} />
-        </Routes>
+        <main>
+          <Outlet />
+        </main>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-  const { currentUser, questions, users } = state
+  const { currentUser, questions, users } = state;
   return {
     currentUser,
     users,
-    questions
-  }
-}
+    questions,
+  };
+};
 
 export default connect(mapStateToProps)(App);

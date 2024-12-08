@@ -1,18 +1,17 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Route, Routes } from 'react-router-dom'
-import LoginPage from './LoginPage'
+import React from "react";
+import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
 
-// TODO: Fix private routes
-const PrivateRoute = ({ component: Component, currentUser, ...rest }) => (
-    <Routes>
-    <Route {...rest} render={props => !currentUser ? (<LoginPage replace />) :
-        (<Component {...props} />)} />
-        </Routes>
-)
+const PrivateRoute = ({ component: Component, currentUser, ...rest }) => {
+  return !currentUser ? (
+    <Navigate to="/login" replace />
+  ) : (
+    <Component {...rest} />
+  );
+};
 
-const mapStateToProps = state => ({
-    currentUser: state.currentUser
-})
+const mapStateToProps = (state) => ({
+  currentUser: state.currentUser,
+});
 
-export default connect(mapStateToProps)(PrivateRoute)
+export default connect(mapStateToProps)(PrivateRoute);

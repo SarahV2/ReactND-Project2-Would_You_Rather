@@ -19,37 +19,41 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      element: <App />,
+      children: [
+        {
+          path: "/",
+          element: <PrivateRoute component={Questions} />,
+        },
+        {
+          path: "/login",
+          element: <LoginPage />,
+        },
+        {
+          path: "/leaderboard",
+          element: <PrivateRoute component={Leaderboard} />,
+        },
+        {
+          path: "/add",
+          element: <PrivateRoute component={NewQuestion} />,
+        },
+
+        {
+          path: "/questions/:question_id",
+          element: <PrivateRoute component={Poll} />,
+        },
+
+        {
+          path: "*",
+          element: <NotFound />,
+        },
+      ],
+    },
+  ],
   {
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <PrivateRoute component={Questions} />,
-      },
-      {
-        path: "/login",
-        element: <LoginPage />,
-      },
-      {
-        path: "/leaderboard",
-        element: <PrivateRoute component={Leaderboard} />,
-      },
-      {
-        path: "/add",
-        element: <PrivateRoute component={NewQuestion} />,
-      },
-
-      {
-        path: "/questions/:question_id",
-        element: <PrivateRoute component={Poll} />,
-      },
-
-      {
-        path: "*",
-        element: <NotFound />,
-      },
-    ],
     future: {
       v7_fetcherPersist: true,
       v7_normalizeFormMethod: true,
@@ -58,8 +62,8 @@ const router = createBrowserRouter([
       v7_skipActionErrorRevalidation: true,
       v7_startTransition: true,
     },
-  },
-]);
+  }
+);
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { getInitialQuestions } from "../actions/questions";
 import { getUsers } from "../actions/users";
 import { connect } from "react-redux";
-import NavigationMenu from "./NavigationMenu";
+import NavigationMenu from "./Layout/NavigationMenu";
+import Footer from "./Layout/Footer";
 import { Outlet } from "react-router-dom";
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
         <main>
           <Outlet />
         </main>
+        <Footer />
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
 import image from "../utils/avatars/00.png";
 import { handleLogin } from "../actions/currentUser";
@@ -23,11 +23,16 @@ function LoginPage() {
   // State
   const [loggedIn, setLoggedIn] = useState(false);
   const [chosenUser, setChosenUser] = useState(null);
+  // UseEffect
+  useEffect(() => {
+    if (currentUser) {
+      handleNavigation();
+    }
+  }, [currentUser]);
 
   const handleNavigation = () => {
     const statePath = location.state;
     if (loggedIn) {
-      console.log("already logged in");
       let targetPath;
       if (statePath) {
         targetPath = statePath?.previousPath;
@@ -36,13 +41,9 @@ function LoginPage() {
       }
 
       console.log("target path", targetPath);
-      navigate(targetPath);
+      return navigate(targetPath);
     }
   };
-
-  if (currentUser) {
-    handleNavigation();
-  }
 
   // Set the users' list
   for (let u in users) {
@@ -51,7 +52,6 @@ function LoginPage() {
   }
 
   const handleSubmit = () => {
-    console.log("handle submit");
     if (chosenUser) {
       dispatch(handleLogin(chosenUser));
       setLoggedIn(true);

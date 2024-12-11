@@ -13,9 +13,11 @@ function Poll() {
 
   // params
   const { question_id } = useParams();
-  //   state
-  const state = useSelector((state) => state);
-  const { questions, users, currentUser } = state;
+  // state
+  const questions = useSelector((state) => state.questions);
+  const users = useSelector((state) => state.users);
+  const currentUser = useSelector((state) => state.currentUser);
+
   //   get question and author
   const question = questions[question_id];
   let author = users[question.author];

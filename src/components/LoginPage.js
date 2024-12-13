@@ -40,7 +40,6 @@ function LoginPage() {
         targetPath = "/";
       }
 
-      console.log("target path", targetPath);
       return navigate(targetPath);
     }
   };

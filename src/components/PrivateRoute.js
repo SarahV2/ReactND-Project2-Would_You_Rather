@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, currentUser, ...rest }) => {
+  const location = useLocation();
   return !currentUser ? (
-    <Navigate to="/login" replace />
+    <Navigate to="/login" replace state={{ previousPath: location.pathname }} />
   ) : (
     <Component {...rest} />
   );

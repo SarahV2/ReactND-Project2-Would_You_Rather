@@ -5,11 +5,12 @@ import { Card } from "react-bootstrap";
 import AnsweredQuestion from "./AnsweredQuestion";
 import NotFound from "./NotFound";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Poll() {
   // hooks
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // params
   const { question_id } = useParams();
@@ -18,24 +19,26 @@ function Poll() {
   const users = useSelector((state) => state.users);
   const currentUser = useSelector((state) => state.currentUser);
 
-  //   get question and author
-  const question = questions[question_id];
-  let author = users[question.author];
-  author = author ? author : "";
+  // state
+  const [question, setQuestion] = useState(null);
+  const [author, setAuthor] = useState(null);
+
+  // set question and author
+
+  useEffect(() => {
+    const queriedQuestion = questions[question_id];
+    if (queriedQuestion) {
+      setQuestion(questions[question_id]);
+      setAuthor(users[queriedQuestion.author]);
+    } else {
+      navigate("/notfound");
+    }
+  }, [question_id]);
 
   // State
   const [questionStatus, setQuestionStatus] = useState("");
   const [isError, setIsError] = useState(false);
   const [userAnswer, setUserAnswer] = useState("");
-
-  useEffect(() => {
-    const answerStatus =
-      question.optionOne.votes.includes(currentUser.id) ||
-      question.optionTwo.votes.includes(currentUser.id);
-    if (answerStatus) {
-      setQuestionStatus("answered");
-    }
-  }, [question]);
 
   const handleChange = (e) => {
     setUserAnswer(e.target.value);
